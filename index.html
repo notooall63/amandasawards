@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amanda’s Awards – Sweet Event Catering & Treats</title>
-  <meta name="description" content="The area’s #1 full-service event and party caterer specializing in bingsu, flavored shaved ice, and freshly made cotton candy. Book Amanda’s Awards for your next event." />
+  <title>Amanda’s Awards – Bingsu, Shaved Ice & Cotton Candy</title>
+  <meta name="description" content="Full-service event catering specializing in bingsu, flavored shaved ice, and cotton candy. From setup to cleanup, Amanda’s Awards makes your event sweet and stress-free." />
 
   <style>
     :root {
-      --bg: #f7f7fb;
+      --bg: #fdf7ff;
       --bg-alt: #ffffff;
       --text: #1f2430;
       --muted: #6b7280;
-      --accent: #ec4899;
-      --accent-soft: rgba(236, 72, 153, 0.1);
-      --accent-strong: #db2777;
+      --accent-pink: #f9a8d4;
+      --accent-pink-strong: #ec4899;
+      --accent-blue: #60a5fa;
+      --accent-mint: #6ee7b7;
+      --accent-soft: rgba(249, 168, 212, 0.18);
       --border-subtle: rgba(15, 23, 42, 0.08);
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
       --radius-lg: 18px;
@@ -31,9 +33,11 @@
         --bg-alt: #020617;
         --text: #e5e7eb;
         --muted: #9ca3af;
-        --accent: #f472b6;
-        --accent-soft: rgba(244, 114, 182, 0.16);
-        --accent-strong: #fb7185;
+        --accent-pink: #f9a8d4;
+        --accent-pink-strong: #fb7185;
+        --accent-blue: #93c5fd;
+        --accent-mint: #6ee7b7;
+        --accent-soft: rgba(249, 168, 212, 0.22);
         --border-subtle: rgba(148, 163, 184, 0.35);
         --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
       }
@@ -47,9 +51,10 @@
       margin: 0;
       padding: 0;
       font-family: var(--font-sans);
-      background: radial-gradient(circle at top left, rgba(236, 72, 153, 0.12), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(249, 168, 212, 0.25), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.25), transparent 55%),
+        var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       scroll-behavior: smooth;
@@ -85,21 +90,21 @@
       z-index: 40;
       backdrop-filter: blur(16px);
       background: linear-gradient(to bottom,
-        rgba(15, 23, 42, 0.85),
-        rgba(15, 23, 42, 0.75),
+        rgba(253, 242, 248, 0.96),
+        rgba(253, 242, 248, 0.9),
         transparent
       );
-      color: #f9fafb;
+      color: var(--text);
     }
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
       .nav {
         background: linear-gradient(to bottom,
-          rgba(248, 250, 252, 0.96),
-          rgba(248, 250, 252, 0.9),
+          rgba(15, 23, 42, 0.96),
+          rgba(15, 23, 42, 0.9),
           transparent
         );
-        color: var(--text);
+        color: #f9fafb;
       }
     }
 
@@ -116,27 +121,19 @@
       gap: 10px;
     }
 
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 12px;
-      background: conic-gradient(from 180deg,
-        #f97316,
-        #ec4899,
-        #6366f1,
-        #22c55e,
-        #f97316
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      overflow: hidden;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+      background: #fff;
     }
 
-    .brand-mark span {
-      font-size: 18px;
-      font-weight: 800;
-      color: #f9fafb;
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .brand-text {
@@ -165,7 +162,7 @@
     .nav-links a {
       padding: 6px 10px;
       border-radius: 999px;
-      transition: background var(--transition-fast), color var(--transition-fast);
+      transition: background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
       color: inherit;
       opacity: 0.9;
     }
@@ -178,7 +175,7 @@
     .nav-cta {
       padding: 8px 18px;
       border-radius: var(--radius-pill);
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-strong));
       color: #f9fafb !important;
       font-weight: 600;
       box-shadow: 0 12px 30px rgba(236, 72, 153, 0.45);
@@ -224,15 +221,16 @@
       gap: 8px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.06);
+      background: rgba(255, 255, 255, 0.8);
       color: var(--muted);
       font-size: 12px;
       margin-bottom: 14px;
+      border: 1px solid rgba(248, 113, 113, 0.2);
     }
 
     @media (prefers-color-scheme: dark) {
       .eyebrow {
-        background: rgba(15, 23, 42, 0.7);
+        background: rgba(15, 23, 42, 0.9);
       }
     }
 
@@ -240,7 +238,7 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--accent);
+      background: var(--accent-pink-strong);
     }
 
     .hero-title {
@@ -251,7 +249,7 @@
     }
 
     .hero-highlight {
-      background: linear-gradient(120deg, var(--accent), #6366f1);
+      background: linear-gradient(120deg, var(--accent-pink-strong), var(--accent-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -278,12 +276,12 @@
       border: 1px solid var(--border-subtle);
       font-size: 12px;
       color: var(--muted);
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.9);
     }
 
     @media (prefers-color-scheme: dark) {
       .badge {
-        background: rgba(15, 23, 42, 0.8);
+        background: rgba(15, 23, 42, 0.9);
       }
     }
 
@@ -304,7 +302,7 @@
       border-radius: var(--radius-pill);
       border: none;
       cursor: pointer;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-strong));
       color: #f9fafb;
       font-weight: 600;
       font-size: 14px;
@@ -319,7 +317,7 @@
       padding: 10px 18px;
       border-radius: var(--radius-pill);
       border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       color: var(--muted);
       font-size: 13px;
       font-weight: 500;
@@ -327,7 +325,7 @@
 
     @media (prefers-color-scheme: dark) {
       .btn-secondary {
-        background: rgba(15, 23, 42, 0.85);
+        background: rgba(15, 23, 42, 0.9);
       }
     }
 
@@ -337,7 +335,7 @@
     }
 
     .hero-note strong {
-      color: var(--accent-strong);
+      color: var(--accent-pink-strong);
       font-weight: 600;
     }
 
@@ -353,6 +351,27 @@
       border: 1px solid var(--border-subtle);
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-logo-badge {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #fff 40%, rgba(236, 72, 153, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+    }
+
+    .hero-logo-badge img {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      object-fit: cover;
     }
 
     .hero-grid-images {
@@ -377,7 +396,7 @@
     .hero-tag {
       position: absolute;
       bottom: 14px;
-      right: 16px;
+      left: 16px;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.85);
@@ -393,18 +412,6 @@
       height: 7px;
       border-radius: 999px;
       background: #22c55e;
-    }
-
-    .hero-floating {
-      position: absolute;
-      top: -14px;
-      left: -10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      font-size: 11px;
-      color: var(--accent-strong);
-      font-weight: 600;
     }
 
     /* SECTIONS */
@@ -483,7 +490,7 @@
       padding: 4px 10px;
       border-radius: 999px;
       background: var(--accent-soft);
-      color: var(--accent-strong);
+      color: var(--accent-pink-strong);
       font-size: 11px;
       font-weight: 600;
       margin-bottom: 8px;
@@ -493,7 +500,7 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: var(--accent-strong);
+      background: var(--accent-pink-strong);
     }
 
     /* GALLERY */
@@ -595,7 +602,7 @@
     }
 
     .contact-row a {
-      color: var(--accent-strong);
+      color: var(--accent-pink-strong);
       font-weight: 500;
     }
 
@@ -631,6 +638,16 @@
     .footer-links a {
       opacity: 0.9;
     }
+
+    /* MOBILE NAV SIMPLIFICATION (logo behaves like icon) */
+    @media (max-width: 640px) {
+      .brand-text span {
+        display: none;
+      }
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -639,12 +656,13 @@
     <header class="nav">
       <div class="shell nav-inner">
         <div class="brand">
-          <div class="brand-mark">
-            <span>A</span>
+          <div class="brand-logo">
+            <!-- Full-color logo (desktop & mobile) -->
+            <img src="amandasawards-logo.png" alt="Amanda’s Awards logo" />
           </div>
           <div class="brand-text">
             <strong>Amanda’s Awards</strong>
-            <span>Sweet event catering & treats</span>
+            <span>Bingsu, shaved ice & cotton candy</span>
           </div>
         </div>
         <nav class="nav-links">
@@ -700,15 +718,15 @@
 
           <div class="hero-media">
             <div class="hero-card">
-              <div class="hero-floating">
-                Neutral aesthetic by default—decor‑friendly for any theme.
+              <div class="hero-logo-badge">
+                <img src="amandasawards-logo.png" alt="Amanda’s Awards logo badge" />
               </div>
               <div class="hero-grid-images">
-                <!-- Replace these placeholders with your real images -->
-                <img class="hero-img" src="" alt="Kids enjoying cotton candy at an event" />
-                <img class="hero-img" src="" alt="Colorful bingsu and shaved ice desserts" />
-                <img class="hero-img" src="" alt="Family event with treats table" />
-                <img class="hero-img" src="" alt="Children celebrating with sweet treats" />
+                <!-- HERO IMAGES (using higher-numbered files) -->
+                <img class="hero-img" src="amandasawardswebpagepic15.png" alt="Friends enjoying cotton candy" />
+                <img class="hero-img" src="amandasawardswebpagepic14.png" alt="Colorful ice cream cups" />
+                <img class="hero-img" src="amandasawardswebpagepic13.png" alt="Couple sharing cotton candy at night" />
+                <img class="hero-img" src="amandasawardswebpagepic12.png" alt="Group holding shaved ice treats" />
               </div>
               <div class="hero-tag">
                 <span class="hero-tag-dot"></span>
@@ -742,6 +760,10 @@
                 Korean‑style bingsu, flavored shaved ice, and custom toppings that keep guests coming back for
                 “just one more.” Perfect for warm‑weather events and indoor parties alike.
               </p>
+              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
+                <!-- Bingsu / shaved ice close-up -->
+                <img src="amandasawardswebpagepic3.png" alt="Strawberry bingsu dessert" />
+              </div>
             </article>
 
             <article class="card">
@@ -754,6 +776,10 @@
                 Classic pink, fun colors, and picture‑perfect swirls. We spin on‑site so kids (and adults) can
                 watch the magic happen—and walk away with a little bit of nostalgia on a stick.
               </p>
+              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
+                <!-- Cotton candy moment -->
+                <img src="amandasawardswebpagepic11.png" alt="Children with cotton candy" />
+              </div>
             </article>
 
             <article class="card">
@@ -766,6 +792,10 @@
                 We handle the logistics, the serving, and the breakdown. You get a worry‑free experience and a
                 venue that looks as clean when we leave as it did when we arrived.
               </p>
+              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
+                <!-- Neutral-ish setup / event vibe -->
+                <img src="amandasawardswebpagepic10.png" alt="Child enjoying dessert at an event" />
+              </div>
             </article>
           </div>
         </div>
@@ -790,6 +820,9 @@
                 Employee appreciation days, school fairs, fundraisers, and community events. We’re fully
                 self‑contained and can operate in lobbies, gyms, cafeterias, and outdoor spaces.
               </p>
+              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
+                <img src="amandasawardswebpagepic9.png" alt="Kids with a large dessert bowl" />
+              </div>
             </article>
 
             <article class="card">
@@ -798,6 +831,9 @@
                 Backyard birthdays, milestone celebrations, and family reunions. We keep kids delighted and
                 parents relaxed with a setup that’s safe, tidy, and easy to host.
               </p>
+              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
+                <img src="amandasawardswebpagepic8.png" alt="Child with chocolate on face enjoying dessert" />
+              </div>
             </article>
 
             <article class="card">
@@ -806,6 +842,9 @@
                 Holiday parties, block parties, and any gathering that needs a little extra joy. Tell us your
                 vision—we’ll match the treats and the aesthetic to your vibe.
               </p>
+              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
+                <img src="amandasawardswebpagepic5.png" alt="Older couple enjoying cotton candy at a fair" />
+              </div>
             </article>
           </div>
         </div>
@@ -824,28 +863,52 @@
           </div>
 
           <div class="gallery-grid">
-            <!-- Replace these placeholders with your real screenshots/photos -->
+            <!-- GALLERY IMAGES -->
             <figure class="gallery-item">
-              <img src="" alt="Child with cotton candy at an event" />
+              <img src="amandasawardswebpagepic7.png" alt="Child with dessert and whipped cream" />
               <figcaption class="gallery-caption">
-                <span>Kids + cotton candy = instant smiles.</span>
-                <span>📸 From a recent birthday party</span>
+                <span>Kids + treats = instant smiles.</span>
+                <span>📸 Family celebrations</span>
               </figcaption>
             </figure>
 
             <figure class="gallery-item">
-              <img src="" alt="Colorful sweets and treats" />
+              <img src="amandasawardswebpagepic6.png" alt="Child with dessert cup" />
               <figcaption class="gallery-caption">
-                <span>Colorful treats, neutral setup.</span>
+                <span>Neutral setup, colorful treats.</span>
                 <span>🎉 Works with any decor</span>
               </figcaption>
             </figure>
 
             <figure class="gallery-item">
-              <img src="" alt="Family and kids at a sweets table" />
+              <img src="amandasawardswebpagepic4.png" alt="Frozen yogurt and fruit collage" />
               <figcaption class="gallery-caption">
-                <span>Families, schools, and teams love us.</span>
-                <span>🤝 Community & corporate events</span>
+                <span>Fresh toppings, bright colors.</span>
+                <span>🍓 Customizable options</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="amandasawardswebpagepic2.png" alt="Mango dessert drink" />
+              <figcaption class="gallery-caption">
+                <span>Seasonal specials & custom menus.</span>
+                <span>🥭 Ask about flavors</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="amandasawardswebpagepic1.png" alt="Child with cotton candy at outdoor event" />
+              <figcaption class="gallery-caption">
+                <span>Outdoor events, parks, and fields.</span>
+                <span>☀️ We bring the setup</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="amandasawardswebpagepic13.png" alt="Couple sharing cotton candy at night" />
+              <figcaption class="gallery-caption">
+                <span>Not just for kids.</span>
+                <span>💖 Date nights & festivals</span>
               </figcaption>
             </figure>
           </div>
@@ -942,7 +1005,7 @@
       <div class="shell footer-inner">
         <div>© <span id="year"></span> Amanda’s Awards. All rights reserved.</div>
         <div class="footer-links">
-          <span>Sweet event catering & treats.</span>
+          <span>Full‑service bingsu, shaved ice & cotton candy catering.</span>
         </div>
       </div>
     </footer>
