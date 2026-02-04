@@ -171,6 +171,7 @@
       background: rgba(148, 163, 184, 0.18);
       opacity: 1;
     }
+
     .nav-cta {
       padding: 8px 18px;
       border-radius: var(--radius-pill);
@@ -190,234 +191,54 @@
       font-size: 16px;
     }
 
-    /* HERO */
-    .hero {
-      padding: 40px 0 72px;
+    /* SECTION HEADERS (uniform across all sections) */
+    .section {
+      padding: 60px 0;
     }
 
-    @media (min-width: 768px) {
-      .hero {
-        padding: 56px 0 96px;
-      }
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    @media (min-width: 900px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      }
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--muted);
+    .section-kicker {
+      display: inline-block;
       font-size: 12px;
-      margin-bottom: 14px;
-      border: 1px solid rgba(248, 113, 113, 0.2);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .eyebrow {
-        background: rgba(15, 23, 42, 0.9);
-      }
-    }
-
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent-pink-strong);
-    }
-
-    .hero-title {
-      font-size: clamp(32px, 4vw, 40px);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin: 0 0 14px;
-    }
-
-    .hero-highlight {
-      background: linear-gradient(120deg, var(--accent-pink-strong), var(--accent-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 22px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .badge {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      font-size: 12px;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .badge {
-        background: rgba(15, 23, 42, 0.9);
-      }
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 11px 22px;
-      border-radius: var(--radius-pill);
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-strong));
-      color: #f9fafb;
-      font-weight: 600;
-      font-size: 14px;
-      box-shadow: 0 16px 40px rgba(236, 72, 153, 0.55);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .btn-secondary {
-        background: rgba(15, 23, 42, 0.9);
-      }
-    }
-
-    .hero-note {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .hero-note strong {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: var(--accent-pink-strong);
-      font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    .hero-media {
-      position: relative;
+    .section-title {
+      font-size: clamp(26px, 4vw, 32px);
+      font-weight: 700;
+      margin: 0 0 10px;
     }
 
-    .hero-card {
-      background: var(--bg-alt);
-      border-radius: 26px;
-      padding: 18px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-subtle);
-      position: relative;
-      overflow: hidden;
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    .hero-logo-badge {
-      position: absolute;
-      top: -18px;
-      right: -18px;
-      width: 80px;
-      height: 80px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #fff 40%, rgba(236, 72, 153, 0.2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
-    }
-
-    .hero-logo-badge img {
-      width: 64px;
-      height: 64px;
-      border-radius: 999px;
-      object-fit: cover;
-    }
-
-    .hero-grid-images {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .hero-img {
-      border-radius: 16px;
-      overflow: hidden;
-      height: 120px;
-      object-fit: cover;
-    }
-
-    @media (min-width: 900px) {
-      .hero-img {
-        height: 140px;
+    /* MOBILE FIXES — FAQ + CONTACT CARD */
+    @media (max-width: 768px) {
+      .faq-grid {
+        grid-template-columns: 1fr !important;
       }
-    }
 
-    .hero-tag {
-      position: absolute;
-      bottom: 14px;
-      left: 16px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      color: #f9fafb;
-      font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-tag-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
+      .contact-card {
+        margin-top: 20px !important;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="page">
-
     <!-- NAV -->
     <header class="nav">
       <div class="shell nav-inner">
@@ -434,8 +255,8 @@
         <nav class="nav-links">
           <a href="#services">Services</a>
           <a href="#events">Events</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#service-area">Service Area</a>
+          <a href="#gallery">Our Aesthetic</a>
+          <a href="#service-area">Where We Travel</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
           <a class="nav-cta" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener">
@@ -609,57 +430,15 @@
         </div>
       </div>
     </section>
-    <!-- SERVICE AREA -->
-    <section class="section" id="service-area">
-      <div class="shell">
-        <div class="section-header">
-          <span class="section-kicker">Service Area</span>
-          <h2 class="section-title">Where We Travel</h2>
-          <p class="section-subtitle">
-            Amanda’s Awards is proudly based in <strong>Central New Jersey</strong>.  
-            Most events fall within our regular service radius, but we’re happy to travel farther with notice.
-          </p>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:18px;">
-
-          <!-- Standard Service Area -->
-          <div style="border-radius:18px; overflow:hidden; background:var(--bg-alt); border:1px solid var(--border-subtle); box-shadow:var(--shadow-soft); padding:18px;">
-            <h3 style="margin:0 0 8px; font-size:15px;">Standard Service Area</h3>
-            <p style="font-size:13px; color:var(--muted); line-height:1.6;">
-              • Central New Jersey and nearby communities  
-              • No additional travel fees within approximately <strong>2 hours of drive‑time</strong> from ZIP <strong>08901</strong>
-            </p>
-          </div>
-
-          <!-- Extended Travel -->
-          <div style="border-radius:18px; overflow:hidden; background:var(--bg-alt); border:1px solid var(--border-subtle); box-shadow:var(--shadow-soft); padding:18px;">
-            <h3 style="margin:0 0 8px; font-size:15px;">Extended Travel</h3>
-            <p style="font-size:13px; color:var(--muted); line-height:1.6;">
-              • Events more than 2 hours away require <strong>2 weeks’ notice</strong><br>
-              • A <strong>$99 travel coverage fee</strong> applies for each additional one‑way hour beyond the first 2 hours  
-                (or portion thereof, calculated using your preferred navigation app)<br>
-              • Events serving more than 50 guests are priced on a case‑by‑case basis, while all DIY pricing on our Book Now page applies to events with <strong>50 guests or fewer</strong>
-            </p>
-          </div>
-
-          <!-- Service Area Map -->
-          <div style="border-radius:18px; overflow:hidden; background:var(--bg-alt); border:1px solid var(--border-subtle); box-shadow:var(--shadow-soft); padding:0;">
-            <img src="amandasawardsservicemap.png" alt="Amanda’s Awards service area map" style="width:100%; display:block;" />
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <!-- GALLERY -->
+    <!-- GALLERY / OUR AESTHETIC -->
     <section class="section" id="gallery">
       <div class="shell">
         <div class="section-header">
           <span class="section-kicker">Our Aesthetic</span>
-          <h2 class="section-title">Neutral by default, ready to blend into any decor.</h2>
+          <h2 class="section-title">Neutral by default, ready to blend into any decor</h2>
           <p class="section-subtitle">
-            Our default setup is clean and neutral so we never clash with your theme — but we’re happy to
-            incorporate your decor, colors, or signage. Book today and join our gallery of happy events.
+            Our setups are intentionally clean and neutral so we never clash with your theme — but we’re always
+            happy to incorporate your colors, signage, or decor. Your event’s look comes first.
           </p>
         </div>
 
@@ -723,6 +502,61 @@
         </div>
       </div>
     </section>
+    <!-- SERVICE AREA / WHERE WE TRAVEL -->
+    <section class="section" id="service-area">
+      <div class="shell">
+        <div class="section-header">
+          <span class="section-kicker">Where We Travel</span>
+          <h2 class="section-title">Serving Central NJ and beyond</h2>
+          <p class="section-subtitle">
+            We’re based in Central New Jersey and regularly serve the surrounding region. Longer‑distance events
+            are absolutely possible — we just follow a clear, simple travel policy to keep things fair for everyone.
+          </p>
+        </div>
+
+        <div class="service-area-grid" style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 32px;
+          align-items: start;
+        ">
+
+          <div>
+            <img src="amandasawardsmap.png" alt="Service area map" style="
+              width: 100%;
+              border-radius: 16px;
+              box-shadow: var(--shadow-soft);
+            " />
+          </div>
+
+          <div>
+            <h3 style="margin-top:0;">Travel Policy</h3>
+            <p>
+              Events farther from our home base (ZIP <strong>08901</strong>) are welcome — we simply ask for:
+            </p>
+
+            <ul style="font-size:14px; color:var(--muted); line-height:1.6; margin-left:18px;">
+              <li><strong>At least 2 weeks’ notice</strong> for any venue more than <strong>2 hours</strong> away</li>
+              <li>
+                A <strong>$99 travel coverage fee</strong> for each additional one‑way hour beyond the first 2 hours  
+                (or portion thereof, calculated using your preferred navigation app)
+              </li>
+            </ul>
+
+            <p style="margin-top:12px;">
+              For larger events (50+ guests), we tailor pricing to match your needs, staffing, and setup.
+              All DIY pricing on our Book Now page applies automatically to events with
+              <strong>50 guests or fewer</strong>.
+            </p>
+
+            <a class="btn-primary" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener" style="margin-top:14px; display:inline-block;">
+              Check availability
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
     <!-- FAQ -->
     <section class="section" id="faq">
       <div class="shell faq-grid" style="
@@ -731,13 +565,13 @@
         gap: 32px;
       ">
 
+        <!-- LEFT COLUMN — FAQ CONTENT -->
         <div>
           <div class="section-header">
             <span class="section-kicker">Questions</span>
             <h2 class="section-title">FAQ</h2>
             <p class="section-subtitle">
-              A few quick answers. If you don’t see your question here, reach out — we’re happy to talk through
-              your event details.
+              Quick answers to the most common questions. If you need anything else, just reach out — we’re happy to help.
             </p>
           </div>
 
@@ -745,12 +579,12 @@
           <div class="faq-item" style="margin-bottom: 22px;">
             <h3>What areas do you serve?</h3>
             <p>
-              We’re based in <strong>Central New Jersey</strong> and serve the surrounding region regularly.
-              Events farther from our home base (ZIP <strong>08901</strong>) are absolutely possible — we just ask for:
+              We’re based in <strong>Central New Jersey</strong> and regularly serve the surrounding region.
+              Longer‑distance events are welcome — we simply follow a clear travel policy:
             </p>
 
             <ul style="font-size:13px; color:var(--muted); line-height:1.6; margin:8px 0 0 18px;">
-              <li><strong>At least 2 weeks’ notice</strong> for any venue more than <strong>2 hours of drive‑time</strong> away</li>
+              <li><strong>2 weeks’ notice</strong> for any venue more than <strong>2 hours</strong> away</li>
               <li>
                 A <strong>$99 travel coverage fee</strong> for each additional one‑way hour beyond the first 2 hours  
                 (or portion thereof, calculated using your preferred navigation app)
@@ -758,8 +592,8 @@
             </ul>
 
             <p style="margin-top:10px;">
-              For larger events (50+ guests), we tailor pricing to match your needs, staffing, and setup.
-              All current do‑it‑yourself pricing options on our Book Now page apply automatically to events with
+              For larger events (50+ guests), we tailor pricing to match your needs.
+              All DIY pricing on our Book Now page applies automatically to events with
               <strong>50 guests or fewer</strong>.
             </p>
           </div>
@@ -768,17 +602,17 @@
           <div class="faq-item" style="margin-bottom: 22px;">
             <h3>Do you handle setup and cleanup?</h3>
             <p>
-              Yes. From setup to cleanup and everything in between, our team handles the full service so you
-              can focus on hosting and enjoying your guests.
+              Yes — every package includes full setup, service, and cleanup.
+              You focus on hosting; we handle the rest.
             </p>
           </div>
 
           <!-- FAQ ITEM 3 -->
           <div class="faq-item" style="margin-bottom: 22px;">
-            <h3>Can you work with our theme or decor?</h3>
+            <h3>Can you match our theme or decor?</h3>
             <p>
-              Our default aesthetic is neutral to blend anywhere, but we’re happy to incorporate your decor,
-              colors, or signage. Just share details when you book.
+              Absolutely. Our default setup is neutral so it blends anywhere, but we’re happy to incorporate
+              your colors, signage, or decor. Just let us know when booking.
             </p>
           </div>
 
@@ -786,13 +620,13 @@
           <div class="faq-item" style="margin-bottom: 22px;">
             <h3>What about ingredients and sustainability?</h3>
             <p>
-              We use high‑quality ingredients, well‑maintained equipment, and ONLY sustainable materials
-              wherever possible. We’re serious about safety, quality, and minimizing waste.
+              We use high‑quality ingredients, well‑maintained equipment, and sustainable materials wherever possible.
+              Safety, quality, and low waste are core to how we operate.
             </p>
           </div>
         </div>
 
-        <!-- CONTACT CARD -->
+        <!-- RIGHT COLUMN — CONTACT CARD -->
         <aside class="contact-card" id="contact" style="
           background: var(--bg-alt);
           border: 1px solid var(--border-subtle);
