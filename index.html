@@ -1,698 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Amanda’s Awards – Bingsu, Shaved Ice & Cotton Candy</title>
   <meta name="description" content="Full-service event catering specializing in bingsu, flavored shaved ice, and cotton candy. From setup to cleanup, Amanda’s Awards makes your event sweet and stress-free." />
 
   <style>
-    :root {
-      --bg: #fdf7ff;
+    /* ===== Root Palette and Tokens (Baseline B with micro refinements) ===== */
+    :root{
+      --bg: #fbf7fc;
       --bg-alt: #ffffff;
-      --text: #1f2430;
+      --text: #111827;
       --muted: #6b7280;
-      --accent-pink: #f9a8d4;
+      --accent-pink: #f7a6d0;
       --accent-pink-strong: #ec4899;
       --accent-blue: #60a5fa;
       --accent-mint: #6ee7b7;
-      --accent-soft: rgba(249, 168, 212, 0.18);
-      --border-subtle: rgba(15, 23, 42, 0.08);
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
-      --radius-lg: 18px;
+      --soft-overlay: rgba(247,166,208,0.16);
+      --border-subtle: rgba(15,23,42,0.06);
+      --shadow-soft: 0 14px 36px rgba(15,23,42,0.10);
+      --radius-lg: 16px;
+      --radius-md: 12px;
       --radius-pill: 999px;
       --nav-height: 72px;
-      --transition-fast: 180ms ease-out;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --transition-fast: 180ms cubic-bezier(.2,.9,.2,1);
+      --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --base-font-size: 16px;
+      --scale-ratio: 1.125;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #020617;
-        --bg-alt: #020617;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --accent-pink: #f9a8d4;
-        --accent-pink-strong: #fb7185;
-        --accent-blue: #93c5fd;
-        --accent-mint: #6ee7b7;
-        --accent-soft: rgba(249, 168, 212, 0.22);
-        --border-subtle: rgba(148, 163, 184, 0.35);
-        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+    /* Dark mode preserves the same aesthetic with adjusted contrast */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #071025;
+        --bg-alt: #071025;
+        --text: #e6eef8;
+        --muted: #9aa6b2;
+        --soft-overlay: rgba(96,165,250,0.06);
+        --border-subtle: rgba(148,163,184,0.18);
+        --shadow-soft: 0 14px 36px rgba(0,0,0,0.55);
       }
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-sans);
+    /* ===== Reset and Base ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      font-size:var(--base-font-size);
+      line-height:1.55;
+      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(249, 168, 212, 0.25), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.25), transparent 55%),
+        radial-gradient(600px 400px at 6% 8%, rgba(247,166,208,0.12), transparent 28%),
+        radial-gradient(500px 360px at 94% 92%, rgba(96,165,250,0.08), transparent 30%),
         var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .shell{max-width:1120px;margin:0 auto;padding:0 20px;width:100%}
+
+    /* ===== Navigation ===== */
+    .nav{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(12px);
+      background:linear-gradient(to bottom, rgba(251,247,252,0.96), rgba(251,247,252,0.9), transparent);
+      border-bottom:1px solid rgba(15,23,42,0.02);
+    }
+    @media (prefers-color-scheme: dark){
+      .nav{background:linear-gradient(to bottom, rgba(7,16,37,0.96), rgba(7,16,37,0.9), transparent)}
+    }
+    .nav-inner{height:var(--nav-height);display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:44px;height:44px;border-radius:var(--radius-pill);overflow:hidden;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,0.08)}
+    .brand-logo img{width:100%;height:100%;object-fit:cover}
+    .brand-text strong{font-size:15px;letter-spacing:0.06em;text-transform:uppercase}
+    .brand-text span{font-size:12px;color:var(--muted)}
+
+    .nav-links{display:flex;align-items:center;gap:16px;font-size:14px}
+    .nav-links a{padding:6px 10px;border-radius:var(--radius-pill);transition:background var(--transition-fast),opacity var(--transition-fast)}
+    .nav-links a:hover{background:rgba(148,163,184,0.12);opacity:1}
+
+    .nav-cta{
+      padding:9px 18px;border-radius:var(--radius-pill);
+      background:linear-gradient(135deg,var(--accent-pink),var(--accent-pink-strong));
+      color:#fff;font-weight:600;box-shadow:0 10px 28px rgba(236,72,153,0.28);
+      display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-size:14px;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    /* ===== Hero ===== */
+    .hero{padding:56px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:20px;padding-bottom:8px}}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-bottom:10px}
+    .hero-title{font-size:clamp(28px,4.6vw,40px);line-height:1.02;margin:0 0 12px;font-weight:700}
+    .hero-highlight{background:linear-gradient(90deg, rgba(247,166,208,0.18), rgba(96,165,250,0.12));padding:4px 8px;border-radius:10px}
+
+    .hero-subtitle{font-size:15px;color:var(--muted);max-width:640px;margin:0 0 18px}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+    .badge{background:var(--soft-overlay);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--text);box-shadow:none}
+
+    .hero-actions{display:flex;gap:12px;margin-top:8px}
+    .btn-primary{background:linear-gradient(135deg,var(--accent-pink),var(--accent-pink-strong));color:#fff;padding:10px 16px;border-radius:12px;font-weight:600;box-shadow:0 10px 28px rgba(236,72,153,0.18)}
+    .btn-secondary{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:10px 16px;border-radius:12px;color:var(--text)}
+
+    .hero-media .hero-card{background:var(--bg-alt);border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow-soft);border:1px solid var(--border-subtle)}
+    .hero-grid-images{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .hero-img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+
+    /* ===== Sections and Headers ===== */
+    .section{padding:56px 0}
+    .section-header{text-align:center;margin-bottom:28px}
+    .section-kicker{display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-pink-strong);margin-bottom:8px}
+    .section-title{font-size:clamp(22px,3.6vw,30px);font-weight:700;margin:0 0 8px}
+    .section-subtitle{font-size:15px;color:var(--muted);max-width:720px;margin:0 auto;line-height:1.6}
+
+    /* ===== Cards and Grids ===== */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    @media (max-width:980px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid-3{grid-template-columns:1fr}}
+
+    .card{background:var(--bg-alt);border-radius:var(--radius-md);padding:16px;border:1px solid var(--border-subtle);box-shadow:0 8px 22px rgba(15,23,42,0.04)}
+    .card h3{margin:8px 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(247,166,208,0.08), rgba(96,165,250,0.06));font-size:13px;color:var(--text);margin-bottom:10px}
+    .pill-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-pink-strong);box-shadow:0 4px 10px rgba(236,72,153,0.12)}
+
+    /* ===== Gallery ===== */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+    .gallery-item img{border-radius:14px;display:block}
+    .gallery-caption{font-size:12px;color:var(--muted);margin-top:8px}
+
+    /* ===== Service Area ===== */
+    .service-area-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+    @media (max-width:980px){.service-area-grid{grid-template-columns:1fr;gap:18px}}
+
+    /* ===== FAQ and Contact Card ===== */
+    .faq-grid{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start}
+    @media (max-width:880px){.faq-grid{grid-template-columns:1fr;gap:18px}}
+    .contact-card{background:var(--bg-alt);border-radius:var(--radius-lg);padding:20px;border:1px solid var(--border-subtle);box-shadow:var(--shadow-soft)}
+    .contact-row a{color:var(--accent-blue);word-break:break-all}
+
+    /* Mobile fix for FAQ/contact overlap */
+    @media (max-width:768px){
+      .faq-grid{grid-template-columns:1fr !important}
+      .contact-card{margin-top:18px !important}
     }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    /* ===== Footer ===== */
+    .footer{padding:24px 0;margin-top:40px;background:var(--bg-alt);border-top:1px solid var(--border-subtle)}
+    .footer-inner{max-width:1120px;margin:0 auto;padding:0 20px;color:var(--muted);font-size:13px}
 
-    .shell {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    /* ===== Micro typography refinements ===== */
+    h1,h2,h3{letter-spacing:-0.01em}
+    p,li{font-size:15px}
+    h1{font-size:clamp(28px,4.6vw,40px);line-height:1.02}
+    h2{font-size:clamp(22px,3.6vw,30px)}
+    h3{font-size:18px}
+    ul{padding-left:18px;margin:8px 0}
+    small{font-size:13px;color:var(--muted)}
 
-    /* NAV */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom,
-        rgba(253, 242, 248, 0.96),
-        rgba(253, 242, 248, 0.9),
-        transparent
-      );
-      color: var(--text);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .nav {
-        background: linear-gradient(to bottom,
-          rgba(15, 23, 42, 0.96),
-          rgba(15, 23, 42, 0.9),
-          transparent
-        );
-        color: #f9fafb;
-      }
-    }
-
-    .nav-inner {
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-      background: #fff;
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-text strong {
-      font-size: 16px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .brand-text span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
-      color: inherit;
-      opacity: 0.9;
-    }
-
-    .nav-links a:hover {
-      background: rgba(148, 163, 184, 0.18);
-      opacity: 1;
-    }
-
-    .nav-cta {
-      padding: 8px 18px;
-      border-radius: var(--radius-pill);
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-strong));
-      color: #f9fafb !important;
-      font-weight: 600;
-      box-shadow: 0 12px 30px rgba(236, 72, 153, 0.45);
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-    }
-
-    .nav-cta span {
-      font-size: 16px;
-    }
-
-    /* SECTION HEADERS */
-    .section {
-      padding: 60px 0;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-pink-strong);
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-size: clamp(26px, 4vw, 32px);
-      font-weight: 700;
-      margin: 0 0 10px;
-    }
-
-    .section-subtitle {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* MOBILE FIX — FAQ + CONTACT CARD */
-    @media (max-width: 768px) {
-      .faq-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .contact-card {
-        margin-top: 20px !important;
-      }
-    }
+    /* Utility */
+    .text-muted{color:var(--muted)}
+    .center{text-align:center}
   </style>
 </head>
 
 <body>
   <div class="page">
-    <!-- NAV -->
-    <header class="nav">
-      <div class="shell nav-inner">
-        <div class="brand">
-          <div class="brand-logo">
-            <img src="amandasawards-logo.png" alt="Amanda’s Awards logo" />
-          </div>
-          <div class="brand-text">
-            <strong>Amanda’s Awards</strong>
-            <span>Bingsu, shaved ice & cotton candy</span>
-          </div>
-        </div>
-
-        <nav class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#events">Events</a>
-          <a href="#gallery">Our Aesthetic</a>
-          <a href="#service-area">Where We Travel</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
-          <a class="nav-cta" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener">
-            Book now <span>↗</span>
-          </a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="shell hero-grid">
-
-        <div>
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            The area’s #1 full‑service event caterer
-          </div>
-
-          <h1 class="hero-title">
-            Sweet, stress‑free events—<span class="hero-highlight">from setup to cleanup.</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            Amanda’s Awards brings bingsu, flavored shaved ice, and freshly spun cotton candy to your
-            event—so you can enjoy the moment while we handle the treats, the smiles, and the sticky fingers.
-          </p>
-
-          <div class="hero-badges">
-            <span class="badge">Bingsu & Korean‑style ice cream</span>
-            <span class="badge">Flavored shaved ice & cotton candy</span>
-            <span class="badge">Indoor & outdoor events</span>
-            <span class="badge">Only sustainable materials</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn-primary" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener">
-              Book now
-            </a>
-
-            <a class="btn-secondary" href="#services">
-              View services
-            </a>
-          </div>
-
-          <div class="hero-note">
-            <strong>Now booking:</strong> birthdays, schools, weddings, corporate events & more.
-          </div>
-        </div>
-
-        <div class="hero-media">
-          <div class="hero-card">
-            <div class="hero-logo-badge">
-              <img src="amandasawards-logo.png" alt="Amanda’s Awards logo badge" />
-            </div>
-
-            <div class="hero-grid-images">
-              <img src="amandasawardswebpagepic1.png" class="hero-img" alt="Event treat photo 1" />
-              <img src="amandasawardswebpagepic2.png" class="hero-img" alt="Event treat photo 2" />
-              <img src="amandasawardswebpagepic3.png" class="hero-img" alt="Event treat photo 3" />
-              <img src="amandasawardswebpagepic4.png" class="hero-img" alt="Event treat photo 4" />
-            </div>
-
-            <div class="hero-tag">
-              <span class="hero-tag-dot"></span>
-              Fully licensed & insured
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="shell">
-        <div class="section-header">
-          <span class="section-kicker">Services</span>
-          <h2 class="section-title">What we bring to your event</h2>
-          <p class="section-subtitle">
-            Three core offerings, all customizable, all delicious — and all handled by our full‑service team.
-          </p>
-        </div>
-
-        <div class="grid-3">
-
-          <div class="card">
-            <div class="pill">
-              <span class="pill-dot"></span>
-              Bingsu
-            </div>
-            <img src="amandasawardswebpagepic5.png" alt="Bingsu dessert" style="border-radius: 12px; margin-bottom: 10px;" />
-            <h3>Korean‑style shaved ice</h3>
-            <p>
-              Soft, fluffy, snow‑like ice topped with fruit, condensed milk, cookies, syrups, and more.
-              A guest favorite for warm‑weather events.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="pill">
-              <span class="pill-dot"></span>
-              Shaved Ice
-            </div>
-            <img src="amandasawardswebpagepic6.png" alt="Shaved ice dessert" style="border-radius: 12px; margin-bottom: 10px;" />
-            <h3>Flavored shaved ice</h3>
-            <p>
-              Bright, refreshing, and fully customizable with a wide range of flavors.
-              Perfect for birthdays, schools, and outdoor celebrations.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="pill">
-              <span class="pill-dot"></span>
-              Cotton Candy
-            </div>
-            <img src="amandasawardswebpagepic7.png" alt="Cotton candy" style="border-radius: 12px; margin-bottom: 10px;" />
-            <h3>Freshly spun cotton candy</h3>
-            <p>
-              Classic carnival magic — spun fresh on‑site in your choice of colors and flavors.
-              Always a hit with kids and adults alike.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <!-- EVENTS -->
-    <section class="section" id="events">
-      <div class="shell">
-        <div class="section-header">
-          <span class="section-kicker">Events</span>
-          <h2 class="section-title">Perfect for every celebration</h2>
-          <p class="section-subtitle">
-            From intimate gatherings to school festivals, we bring the sweetness wherever it’s needed.
-          </p>
-          <p class="section-subtitle">
-            Larger events (50+ guests) may require custom pricing, while all DIY pricing on our Book Now page applies to events with <strong>50 guests or fewer</strong>.
-          </p>
-        </div>
-
-        <div class="grid-3">
-
-          <div class="card">
-            <img src="amandasawardswebpagepic8.png" alt="Birthday party treats" style="border-radius: 12px; margin-bottom: 10px;" />
-            <h3>Birthdays</h3>
-            <p>
-              Kids, teens, adults — everyone lights up when the treats arrive.
-              Indoors or outdoors, we handle the full setup.
-            </p>
-          </div>
-
-          <div class="card">
-            <img src="amandasawardswebpagepic9.png" alt="School event shaved ice" style="border-radius: 12px; margin-bottom: 10px;" />
-            <h3>Schools & Camps</h3>
-            <p>
-              Field days, graduations, celebrations, and fundraisers.
-              Fast service and kid‑friendly options keep the line moving.
-            </p>
-          </div>
-
-          <div class="card">
-            <img src="amandasawardswebpagepic10.png" alt="Wedding dessert station" style="border-radius: 12px; margin-bottom: 10px;" />
-            <h3>Weddings & Corporate</h3>
-            <p>
-              Elegant, neutral, and theme‑friendly setups that blend into any decor.
-              A memorable treat station for guests of all ages.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <!-- GALLERY / OUR AESTHETIC -->
-    <section class="section" id="gallery">
-      <div class="shell">
-        <div class="section-header">
-          <span class="section-kicker">Our Aesthetic</span>
-          <h2 class="section-title">Neutral by default, ready to blend into any decor</h2>
-          <p class="section-subtitle">
-            Our setups are intentionally clean and neutral so we never clash with your theme — but we’re always
-            happy to incorporate your colors, signage, or decor. Your event’s look comes first.
-          </p>
-        </div>
-
-        <div class="gallery-grid" style="
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-          gap: 18px;
-        ">
-
-          <figure class="gallery-item" style="margin:0;">
-            <img src="amandasawardswebpagepic11.png" alt="Gallery photo 1" style="border-radius: 14px;" />
-            <figcaption class="gallery-caption" style="font-size:12px; color:var(--muted); margin-top:6px;">
-              Clean setups for indoor events.
-            </figcaption>
-          </figure>
-
-          <figure class="gallery-item" style="margin:0;">
-            <img src="amandasawardswebpagepic12.png" alt="Gallery photo 2" style="border-radius: 14px;" />
-            <figcaption class="gallery-caption" style="font-size:12px; color:var(--muted); margin-top:6px;">
-              Outdoor celebrations, parks, and fields.
-            </figcaption>
-          </figure>
-
-          <figure class="gallery-item" style="margin:0;">
-            <img src="amandasawardswebpagepic13.png" alt="Gallery photo 3" style="border-radius: 14px;" />
-            <figcaption class="gallery-caption" style="font-size:12px; color:var(--muted); margin-top:6px;">
-              Perfect for date nights & festivals.
-            </figcaption>
-          </figure>
-
-          <figure class="gallery-item" style="margin:0;">
-            <img src="amandasawardswebpagepic14.png" alt="Gallery photo 4" style="border-radius: 14px;" />
-            <figcaption class="gallery-caption" style="font-size:12px; color:var(--muted); margin-top:6px;">
-              Fresh toppings, bright colors.
-            </figcaption>
-          </figure>
-
-          <figure class="gallery-item" style="margin:0;">
-            <img src="amandasawardswebpagepic15.png" alt="Gallery photo 5" style="border-radius: 14px;" />
-            <figcaption class="gallery-caption" style="font-size:12px; color:var(--muted); margin-top:6px;">
-              Works with any theme or palette.
-            </figcaption>
-          </figure>
-
-          <figure class="gallery-item" style="margin:0;">
-            <img src="amandasawardswebpagepic3.png" alt="Gallery photo 6" style="border-radius: 14px;" />
-            <figcaption class="gallery-caption" style="font-size:12px; color:var(--muted); margin-top:6px;">
-              Aesthetic, neutral, and guest‑friendly.
-            </figcaption>
-          </figure>
-
-        </div>
-
-        <div style="margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
-          <a class="btn-primary" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener">
-            Book today & join the gallery
-          </a>
-          <span style="font-size: 12px; color: var(--muted);">
-            Have photos from a past event? Reply to your booking confirmation and we’ll feature our favorites.
-          </span>
-        </div>
-      </div>
-    </section>
-    <!-- SERVICE AREA / WHERE WE TRAVEL -->
-    <section class="section" id="service-area">
-      <div class="shell">
-        <div class="section-header">
-          <span class="section-kicker">Where We Travel</span>
-          <h2 class="section-title">Serving Central NJ and beyond</h2>
-          <p class="section-subtitle">
-            We’re based in Central New Jersey and regularly serve the surrounding region. Longer‑distance events
-            are absolutely possible — we just follow a clear, simple travel policy to keep things fair for everyone.
-          </p>
-        </div>
-
-        <div class="service-area-grid" style="
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 32px;
-          align-items: start;
-        ">
-
-          <div>
-            <img src="amandasawardsservicemap.png" alt="Service area map" style="
-              width: 100%;
-              border-radius: 16px;
-              box-shadow: var(--shadow-soft);
-            " />
-          </div>
-
-          <div>
-            <h3 style="margin-top:0;">Travel Policy</h3>
-            <p>
-              Events farther from our home base (ZIP <strong>08901</strong>) are welcome — we simply ask for:
-            </p>
-
-            <ul style="font-size:14px; color:var(--muted); line-height:1.6; margin-left:18px;">
-              <li><strong>At least 2 weeks’ notice</strong> for any venue more than <strong>2 hours</strong> away</li>
-              <li>
-                A <strong>$99 travel coverage fee</strong> for each additional one‑way hour beyond the first 2 hours  
-                (or portion thereof, calculated using your preferred navigation app)
-              </li>
-            </ul>
-
-            <p style="margin-top:12px;">
-              For larger events (50+ guests), we tailor pricing to match your needs, staffing, and setup.
-              All DIY pricing on our Book Now page applies automatically to events with
-              <strong>50 guests or fewer</strong>.
-            </p>
-
-            <a class="btn-primary" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener" style="margin-top:14px; display:inline-block;">
-              Check availability
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="shell faq-grid" style="
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 320px;
-        gap: 32px;
-      ">
-
-        <!-- LEFT COLUMN — FAQ CONTENT -->
-        <div>
-          <div class="section-header">
-            <span class="section-kicker">Questions</span>
-            <h2 class="section-title">FAQ</h2>
-            <p class="section-subtitle">
-              Quick answers to the most common questions. If you need anything else, just reach out — we’re happy to help.
-            </p>
-          </div>
-
-          <!-- FAQ ITEM 1 -->
-          <div class="faq-item" style="margin-bottom: 22px;">
-            <h3>What areas do you serve?</h3>
-            <p>
-              We’re based in <strong>Central New Jersey</strong> and regularly serve the surrounding region.
-              Longer‑distance events are welcome — we simply follow a clear travel policy:
-            </p>
-
-            <ul style="font-size:13px; color:var(--muted); line-height:1.6; margin:8px 0 0 18px;">
-              <li><strong>2 weeks’ notice</strong> for any venue more than <strong>2 hours</strong> away</li>
-              <li>
-                A <strong>$99 travel coverage fee</strong> for each additional one‑way hour beyond the first 2 hours  
-                (or portion thereof, calculated using your preferred navigation app)
-              </li>
-            </ul>
-
-            <p style="margin-top:10px;">
-              For larger events (50+ guests), we tailor pricing to match your needs.
-              All DIY pricing on our Book Now page applies automatically to events with
-              <strong>50 guests or fewer</strong>.
-            </p>
-          </div>
-
-          <!-- FAQ ITEM 2 -->
-          <div class="faq-item" style="margin-bottom: 22px;">
-            <h3>Do you handle setup and cleanup?</h3>
-            <p>
-              Yes — every package includes full setup, service, and cleanup.
-              You focus on hosting; we handle the rest.
-            </p>
-          </div>
-
-          <!-- FAQ ITEM 3 -->
-          <div class="faq-item" style="margin-bottom: 22px;">
-            <h3>Can you match our theme or decor?</h3>
-            <p>
-              Absolutely. Our default setup is neutral so it blends anywhere, but we’re happy to incorporate
-              your colors, signage, or decor. Just let us know when booking.
-            </p>
-          </div>
-
-          <!-- FAQ ITEM 4 -->
-          <div class="faq-item" style="margin-bottom: 22px;">
-            <h3>What about ingredients and sustainability?</h3>
-            <p>
-              We use high‑quality ingredients, well‑maintained equipment, and sustainable materials wherever possible.
-              Safety, quality, and low waste are core to how we operate.
-            </p>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN — CONTACT CARD -->
-        <aside class="contact-card" id="contact" style="
-          background: var(--bg-alt);
-          border: 1px solid var(--border-subtle);
-          border-radius: 18px;
-          padding: 20px;
-          box-shadow: var(--shadow-soft);
-          height: fit-content;
-        ">
-          <div class="pill" style="margin-bottom: 10px;">
-            <span class="pill-dot"></span>
-            Let’s talk about your event
-          </div>
-
-          <p style="font-size:13px; color:var(--muted); line-height:1.6;">
-            Ready to book or have a few questions first? Use our Square booking link to reserve your date, or
-            reach out directly and we’ll help you plan the sweetest version of your event.
-          </p>
-
-          <div class="contact-row" style="display:flex; flex-direction:column; gap:12px; font-size:13px;">
-            <div>
-              <strong>Book instantly:</strong><br />
-              <a href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener">
-                https://square.link/u/ZgLTjFaW
-              </a>
-            </div>
-
-            <div>
-              <strong>Email:</strong><br />
-              <a href="mailto:amandasawards@aol.com">amandasawards@aol.com</a>
-            </div>
-
-            <div>
-              <strong>Website:</strong><br />
-              <a href="http://amandasawards.com">amandasawards.com</a>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-    <!-- FOOTER -->
-    <footer class="footer" style="
-      padding: 24px 0;
-      margin-top: 40px;
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border-subtle);
-    ">
-      <div class="shell footer-inner" style="
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 13px;
-        color: var(--muted);
-      ">
-        <div>© <span id="year"></span> Amanda’s Awards. All rights reserved.</div>
-        <div class="footer-links">
-          Full‑service bingsu, shaved ice & cotton candy catering.
-        </div>
-      </div>
-    </footer>
-
-  </div> <!-- end .page -->
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-</body>
-</html>
