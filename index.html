@@ -503,150 +503,9 @@
       background: var(--accent-pink-strong);
     }
 
-    /* GALLERY */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 14px;
-    }
-
-    @media (min-width: 720px) {
-      .gallery-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .gallery-item {
-      border-radius: 16px;
-      overflow: hidden;
-      background: #020617;
-      position: relative;
-      min-height: 140px;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .gallery-caption {
-      position: absolute;
-      bottom: 8px;
-      left: 10px;
-      right: 10px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.78);
-      color: #f9fafb;
-      font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
-
-    .gallery-caption span {
-      opacity: 0.9;
-    }
-
-    /* FAQ / CONTACT */
-    .faq-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 20px;
-    }
-
-    @media (min-width: 900px) {
-      .faq-grid {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      }
-    }
-
-    .faq-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .faq-item:last-child {
-      border-bottom: none;
-    }
-
-    .faq-item h3 {
-      margin: 0 0 4px;
-      font-size: 14px;
-    }
-
-    .faq-item p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .contact-card {
-      background: var(--bg-alt);
-      border-radius: var(--radius-lg);
-      padding: 18px 18px 16px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .contact-row {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .contact-row a {
-      color: var(--accent-pink-strong);
-      font-weight: 500;
-    }
-
-    /* FOOTER */
-    .footer {
-      padding: 24px 0 32px;
-      font-size: 12px;
-      color: var(--muted);
-      border-top: 1px solid var(--border-subtle);
-      margin-top: 24px;
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    @media (min-width: 720px) {
-      .footer-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-links a {
-      opacity: 0.9;
-    }
-
-    /* MOBILE NAV SIMPLIFICATION (logo behaves like icon) */
-    @media (max-width: 640px) {
-      .brand-text span {
-        display: none;
-      }
-      .nav-links a:not(.nav-cta) {
-        display: none;
-      }
+    /* EVENTS */
+    .section#events .section-subtitle + .section-subtitle {
+      margin-top: 6px;
     }
   </style>
 </head>
@@ -657,7 +516,6 @@
       <div class="shell nav-inner">
         <div class="brand">
           <div class="brand-logo">
-            <!-- Full-color logo (desktop & mobile) -->
             <img src="amandasawards-logo.png" alt="Amanda’s Awards logo" />
           </div>
           <div class="brand-text">
@@ -704,148 +562,42 @@
 
             <div class="hero-actions">
               <a class="btn-primary" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener">
-                Book your date on Square
-              </a>
-              <a class="btn-secondary" href="#gallery">
-                Join our gallery of happy events
-              </a>
-            </div>
+                Book
+                        </section>
 
-            <p class="hero-note">
-              From corporate get‑togethers to backyard birthdays—<strong>book today and we’ll bring the sweet.</strong>
-            </p>
-          </div>
-
-          <div class="hero-media">
-            <div class="hero-card">
-              <div class="hero-logo-badge">
-                <img src="amandasawards-logo.png" alt="Amanda’s Awards logo badge" />
-              </div>
-              <div class="hero-grid-images">
-                <!-- HERO IMAGES (using higher-numbered files) -->
-                <img class="hero-img" src="amandasawardswebpagepic15.png" alt="Friends enjoying cotton candy" />
-                <img class="hero-img" src="amandasawardswebpagepic14.png" alt="Colorful ice cream cups" />
-                <img class="hero-img" src="amandasawardswebpagepic13.png" alt="Couple sharing cotton candy at night" />
-                <img class="hero-img" src="amandasawardswebpagepic12.png" alt="Group holding shaved ice treats" />
-              </div>
-              <div class="hero-tag">
-                <span class="hero-tag-dot"></span>
-                <span>Real events. Real families. Real sugar highs.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SERVICES -->
-      <section class="section" id="services">
+      <!-- SERVICE AREA (NEW SECTION) -->
+      <section class="section" id="service-area">
         <div class="shell">
           <div class="section-header">
-            <span class="section-kicker">What we do</span>
-            <h2 class="section-title">Full‑service sweet catering for events that actually feel special.</h2>
+            <span class="section-kicker">Service Area</span>
+            <h2 class="section-title">Where We Travel</h2>
             <p class="section-subtitle">
-              We bring the equipment, the ingredients, and the people. You get a clean setup, a smooth service,
-              and a spotless teardown—plus a crowd of very happy guests.
+              Amanda’s Awards is proudly based in <strong>Central New Jersey</strong>.  
+              Most events fall within our regular service radius, but we’re happy to travel farther with notice.
             </p>
           </div>
 
-          <div class="grid-3">
-            <article class="card">
-              <div class="pill">
-                <span class="pill-dot"></span>
-                Bingsu & shaved ice
-              </div>
-              <h3>Chilled treats, built to order.</h3>
-              <p>
-                Korean‑style bingsu, flavored shaved ice, and custom toppings that keep guests coming back for
-                “just one more.” Perfect for warm‑weather events and indoor parties alike.
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div style="border-radius:18px; overflow:hidden; background:var(--bg-alt); border:1px solid var(--border-subtle); box-shadow:var(--shadow-soft); padding:18px;">
+              <h3 style="margin:0 0 8px; font-size:15px;">Standard Service Area</h3>
+              <p style="font-size:13px; color:var(--muted); line-height:1.6;">
+                • Central New Jersey and nearby communities  
+                • No additional travel fees within approximately <strong>2 hours of drive‑time</strong> from ZIP <strong>08901</strong>
               </p>
-              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <!-- Bingsu / shaved ice close-up -->
-                <img src="amandasawardswebpagepic3.png" alt="Strawberry bingsu dessert" />
-              </div>
-            </article>
+            </div>
 
-            <article class="card">
-              <div class="pill">
-                <span class="pill-dot"></span>
-                Cotton candy
-              </div>
-              <h3>Freshly spun, photo‑ready clouds.</h3>
-              <p>
-                Classic pink, fun colors, and picture‑perfect swirls. We spin on‑site so kids (and adults) can
-                watch the magic happen—and walk away with a little bit of nostalgia on a stick.
+            <div style="border-radius:18px; overflow:hidden; background:var(--bg-alt); border:1px solid var(--border-subtle); box-shadow:var(--shadow-soft); padding:18px;">
+              <h3 style="margin:0 0 8px; font-size:15px;">Extended Travel</h3>
+              <p style="font-size:13px; color:var(--muted); line-height:1.6;">
+                • Events more than 2 hours away require <strong>2 weeks’ notice</strong>  
+                • A <strong>$99 travel coverage fee</strong> applies for each additional one‑way hour beyond the first 2 hours  
+                  (or portion thereof, calculated using your preferred navigation app)
               </p>
-              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <!-- Cotton candy moment -->
-                <img src="amandasawardswebpagepic11.png" alt="Children with cotton candy" />
-              </div>
-            </article>
+            </div>
 
-            <article class="card">
-              <div class="pill">
-                <span class="pill-dot"></span>
-                End‑to‑end service
-              </div>
-              <h3>From setup to cleanup.</h3>
-              <p>
-                We handle the logistics, the serving, and the breakdown. You get a worry‑free experience and a
-                venue that looks as clean when we leave as it did when we arrived.
-              </p>
-              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <!-- Neutral-ish setup / event vibe -->
-                <img src="amandasawardswebpagepic10.png" alt="Child enjoying dessert at an event" />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- EVENTS -->
-      <section class="section" id="events">
-        <div class="shell">
-          <div class="section-header">
-            <span class="section-kicker">Events we serve</span>
-            <h2 class="section-title">From corporate to backyard—if people gather, we can sweeten it.</h2>
-            <p class="section-subtitle">
-              Indoor or outdoor, big or small, formal or fun—Amanda’s Awards adapts to your space, your theme,
-              and your guest list.
-            </p>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Corporate & school events</h3>
-              <p>
-                Employee appreciation days, school fairs, fundraisers, and community events. We’re fully
-                self‑contained and can operate in lobbies, gyms, cafeterias, and outdoor spaces.
-              </p>
-              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <img src="amandasawardswebpagepic9.png" alt="Kids with a large dessert bowl" />
-              </div>
-            </article>
-
-            <article class="card">
-              <h3>Birthdays & family parties</h3>
-              <p>
-                Backyard birthdays, milestone celebrations, and family reunions. We keep kids delighted and
-                parents relaxed with a setup that’s safe, tidy, and easy to host.
-              </p>
-              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <img src="amandasawardswebpagepic8.png" alt="Child with chocolate on face enjoying dessert" />
-              </div>
-            </article>
-
-            <article class="card">
-              <h3>Special occasions & more</h3>
-              <p>
-                Holiday parties, block parties, and any gathering that needs a little extra joy. Tell us your
-                vision—we’ll match the treats and the aesthetic to your vibe.
-              </p>
-              <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <img src="amandasawardswebpagepic5.png" alt="Older couple enjoying cotton candy at a fair" />
-              </div>
-            </article>
+            <div style="border-radius:18px; overflow:hidden; background:linear-gradient(135deg, var(--accent-soft), rgba(96,165,250,0.15)); padding:40px; text-align:center; color:var(--muted); font-size:13px;">
+              <em>Optional: a simple service‑radius illustration can go here.</em>
+            </div>
           </div>
         </div>
       </section>
@@ -863,7 +615,6 @@
           </div>
 
           <div class="gallery-grid">
-            <!-- GALLERY IMAGES -->
             <figure class="gallery-item">
               <img src="amandasawardswebpagepic7.png" alt="Child with dessert and whipped cream" />
               <figcaption class="gallery-caption">
@@ -937,11 +688,22 @@
               </p>
             </div>
 
+            <!-- UPDATED FAQ ENTRY -->
             <div class="faq-item">
               <h3>What areas do you serve?</h3>
               <p>
-                We primarily serve our local region and surrounding communities. Share your event location when
-                you book and we’ll confirm availability and any travel details.
+                We’re based in <strong>Central New Jersey</strong> and serve the surrounding region regularly.  
+                Events farther from our home base (ZIP <strong>08901</strong>) are absolutely possible — we just ask for:
+              </p>
+              <ul style="font-size:13px; color:var(--muted); line-height:1.6; margin:8px 0 0 18px;">
+                <li><strong>At least 2 weeks’ notice</strong> for any venue more than <strong>2 hours of drive‑time</strong> away</li>
+                <li>
+                  A <strong>$99 travel coverage fee</strong> for each additional one‑way hour beyond the first 2 hours  
+                  (or portion thereof, calculated using your preferred navigation app)
+                </li>
+              </ul>
+              <p style="margin-top:10px;">
+                This helps us stay punctual, prepared, and fully stocked for your event.
               </p>
             </div>
 
@@ -1016,3 +778,5 @@
   </script>
 </body>
 </html>
+
+        
