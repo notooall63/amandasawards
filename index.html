@@ -397,14 +397,14 @@
       position: absolute;
       bottom: 14px;
       left: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.85);
       color: #f9fafb;
       font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .hero-tag-dot {
@@ -596,68 +596,18 @@
 
     .contact-row {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .contact-row a {
-      color: var(--accent-pink-strong);
-      font-weight: 500;
-    }
-
-    /* FOOTER */
-    .footer {
-      padding: 24px 0 32px;
-      font-size: 12px;
-      color: var(--muted);
-      border-top: 1px solid var(--border-subtle);
-      margin-top: 24px;
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    @media (min-width: 720px) {
-      .footer-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-links a {
-      opacity: 0.9;
-    }
-
-    /* MOBILE NAV SIMPLIFICATION (logo behaves like icon) */
-    @media (max-width: 640px) {
-      .brand-text span {
-        display: none;
-      }
-      .nav-links a:not(.nav-cta) {
-        display: none;
-      }
-    }
-  </style>
+      flex
+</style>
 </head>
+
 <body>
   <div class="page">
+
     <!-- NAV -->
     <header class="nav">
       <div class="shell nav-inner">
         <div class="brand">
           <div class="brand-logo">
-            <!-- Full-color logo (desktop & mobile) -->
             <img src="amandasawards-logo.png" alt="Amanda’s Awards logo" />
           </div>
           <div class="brand-text">
@@ -679,6 +629,7 @@
     </header>
 
     <main>
+
       <!-- HERO -->
       <section class="hero" id="top">
         <div class="shell hero-grid">
@@ -687,9 +638,11 @@
               <span class="eyebrow-dot"></span>
               The area’s #1 full‑service event caterer
             </div>
+
             <h1 class="hero-title">
               Sweet, stress‑free events—<span class="hero-highlight">from setup to cleanup.</span>
             </h1>
+
             <p class="hero-subtitle">
               Amanda’s Awards brings bingsu, flavored shaved ice, and freshly spun cotton candy to your
               event—so you can enjoy the moment while we handle the treats, the smiles, and the sticky fingers.
@@ -712,7 +665,9 @@
             </div>
 
             <p class="hero-note">
-              From corporate get‑togethers to backyard birthdays—<strong>book today and we’ll bring the sweet.</strong>
+              From corporate get‑togethers to backyard birthdays—
+              <strong>book today and we’ll bring the sweet.</strong><br>
+              <strong>Fully licensed & insured.</strong>
             </p>
           </div>
 
@@ -721,22 +676,23 @@
               <div class="hero-logo-badge">
                 <img src="amandasawards-logo.png" alt="Amanda’s Awards logo badge" />
               </div>
+
               <div class="hero-grid-images">
-                <!-- HERO IMAGES (using higher-numbered files) -->
                 <img class="hero-img" src="amandasawardswebpagepic15.png" alt="Friends enjoying cotton candy" />
                 <img class="hero-img" src="amandasawardswebpagepic14.png" alt="Colorful ice cream cups" />
                 <img class="hero-img" src="amandasawardswebpagepic13.png" alt="Couple sharing cotton candy at night" />
                 <img class="hero-img" src="amandasawardswebpagepic12.png" alt="Group holding shaved ice treats" />
               </div>
+
               <div class="hero-tag">
                 <span class="hero-tag-dot"></span>
                 <span>Real events. Real families. Real sugar highs.</span>
               </div>
             </div>
           </div>
+
         </div>
       </section>
-
       <!-- SERVICES -->
       <section class="section" id="services">
         <div class="shell">
@@ -761,7 +717,6 @@
                 “just one more.” Perfect for warm‑weather events and indoor parties alike.
               </p>
               <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <!-- Bingsu / shaved ice close-up -->
                 <img src="amandasawardswebpagepic3.png" alt="Strawberry bingsu dessert" />
               </div>
             </article>
@@ -777,7 +732,6 @@
                 watch the magic happen—and walk away with a little bit of nostalgia on a stick.
               </p>
               <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <!-- Cotton candy moment -->
                 <img src="amandasawardswebpagepic11.png" alt="Children with cotton candy" />
               </div>
             </article>
@@ -793,14 +747,12 @@
                 venue that looks as clean when we leave as it did when we arrived.
               </p>
               <div style="margin-top: 10px; border-radius: 12px; overflow: hidden;">
-                <!-- Neutral-ish setup / event vibe -->
                 <img src="amandasawardswebpagepic10.png" alt="Child enjoying dessert at an event" />
               </div>
             </article>
           </div>
         </div>
       </section>
-
       <!-- EVENTS -->
       <section class="section" id="events">
         <div class="shell">
@@ -849,7 +801,6 @@
           </div>
         </div>
       </section>
-
       <!-- AESTHETIC / GALLERY -->
       <section class="section" id="gallery">
         <div class="shell">
@@ -923,7 +874,6 @@
           </div>
         </div>
       </section>
-
       <!-- FAQ / CONTACT -->
       <section class="section" id="faq">
         <div class="shell faq-grid">
@@ -977,7 +927,8 @@
             </div>
             <p>
               Ready to book or have a few questions first? Use our Square booking link to reserve your date, or
-              reach out directly and we’ll help you plan the sweetest version of your event.
+              reach out directly and we’ll help you plan the sweetest version of your event.<br>
+              <strong>We are fully licensed & insured.</strong>
             </p>
 
             <div class="contact-row">
@@ -997,6 +948,50 @@
               </div>
             </div>
           </aside>
+        </div>
+      </section>
+      <!-- SERVICE AREA / MAP (NEW SECTION ADDED) -->
+      <section class="section" id="service-area">
+        <div class="shell">
+          <div class="section-header">
+            <span class="section-kicker">Where we travel</span>
+            <h2 class="section-title">Serving Central NJ and surrounding areas.</h2>
+            <p class="section-subtitle">
+              We’re based in New Brunswick (08901) and regularly serve the surrounding region. Longer‑distance
+              events are welcome—we just follow a simple, fair travel policy.
+            </p>
+          </div>
+
+          <div class="service-area-grid" style="display: grid; grid-template-columns: minmax(0,1fr); gap: 24px;">
+            <div>
+              <img src="amandasawardsservicemap.png" alt="Service area map" style="border-radius: 16px; width: 100%; height: auto;" />
+            </div>
+
+            <div>
+              <h3 style="margin-top: 0;">Travel policy</h3>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">
+                Events farther from our home base are welcome—we simply ask for:
+              </p>
+
+              <ul style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-left: 18px;">
+                <li><strong>2 weeks’ notice</strong> for any venue more than <strong>2 hours</strong> away</li>
+                <li>
+                  A <strong>$99 travel coverage fee</strong> for each additional one‑way hour beyond the first 2 hours
+                  (or portion thereof, calculated using your preferred navigation app)
+                </li>
+              </ul>
+
+              <p style="margin-top: 12px; font-size: 13px; color: var(--muted); line-height: 1.6;">
+                For larger events (<strong>50+ guests</strong>), we tailor pricing to match your needs.
+                All DIY pricing on our Square booking page applies automatically to events with
+                <strong>50 guests or fewer</strong>.
+              </p>
+
+              <a class="btn-primary" href="https://square.link/u/ZgLTjFaW" target="_blank" rel="noopener" style="margin-top: 14px; display: inline-block;">
+                Check availability
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
